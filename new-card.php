@@ -14,7 +14,7 @@
 	</form>
 
 	<?php
-		if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			echo 'ad';
 		}
 	?>
@@ -24,26 +24,26 @@
 
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "mysql";
-$dbname = 'to do list';
+// $servername = "localhost";
+// $username = "root";
+// $password = "mysql";
+// $dbname = 'to_do';
 
-try {
-   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// try {
+//    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+//     // set the PDO error mode to exception
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "INSERT INTO Todo (title, background color, content)
-    VALUES ('a', 'b', 'c')";
+//     $sql = "INSERT INTO cards (title, background_color, content)
+//     VALUES ('a', 'b', 'c')";
 
-	// echo '<script>console.log("';
-	$conn->exec($sql);
-    echo "added successfully";
-	// echo '");</script>';
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
+// 	// echo '<script>console.log("';
+// 	$conn->exec($sql);
+//     echo "connected successfully";
+// 	// echo '");</script>';
+//     }
+// catch(PDOException $e)
+//     {
+//     echo "Connection failed: " . $e->getMessage();
+//     }
 ?>
