@@ -7,17 +7,30 @@
 	<title>add card</title>
 </head>
 <body>
-	<a href="index.php">go back</a>
-	<form>
-		<input type="text" name="text-input" id="text-input-id">
-		<input type="submit" name="submit">
-	</form>
 
 	<?php
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			echo 'ad';
-		}
+		include 'database/add-card.php';
 	?>
+	<a href="index.php">go back</a>
+	<form method="POST">
+		<br>
+		Title: <input type="text" name="title" id="text-input" value='<?php echo $_POST['title']; ?>' required><br><br>
+		Background color: 
+		<select id="backgroundColor-input" name="backgroundColor">
+		    <option style='color: white' value="white">white</option>
+		    <option style='color: pink' value='pink'>pink</option>
+		    <option style='color: red' value="red">red</option>
+		    <option style='color: green' value="green">green</option>
+		    <option style='color: rgb(45, 255, 0);' value='lime green'>lime green</option>
+		    <option style='color: rgb(0, 255, 215)' value='baby blue'>baby blue</option>
+		    <option style='color: blue' value="blue">blue</option>
+		    <option style='color: yellow' value='yellow'>yellow</option>
+		    <option style='color: orange' value='orange'>orange</option>
+		    <option style='color: purple' value='purple'>purple</option>
+	  	</select><br><br>
+		content: <input type="text" name="content" id="content-input" value='<?php echo $_POST['content']; ?>' required><br><br>
+		<input type="submit" name="submit"><br><br>
+	</form>
 </body>
 </html>
 
