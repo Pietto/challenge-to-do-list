@@ -11,8 +11,8 @@ h1, h2, h3{
 }
 
 .primary_rows .cards{
-	overflow-y: scroll;
-	height: 70vh;
+	overflow-y: auto;
+	height: auto;
 }
 
 .cards{
@@ -41,4 +41,83 @@ h1, h2, h3{
 
 .add_card_button{
 	margin-bottom: -10px;
+}
+
+.add_card_button:hover{
+	cursor: pointer;
+}
+
+
+
+
+/* popup */
+
+
+#overlay{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.popup{
+	display: grid;
+	grid-row-gap: 0px ;
+	border-radius: 20px;
+	padding: 5px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	width: 35vw;
+	height: 40vh;
+
+	
+	background-color: rgba(0,200,255,1);
+}
+
+.icon{
+	width: 3vw;
+}
+
+#create_popup #title{
+	grid-row: 1;
+	grid-column: 1/2;
+	font-size: 1.5vw;
+}
+
+#create_popup #description_alt{
+	grid-row: 2;
+	grid-column: 1/2;
+	font-size: 1.5vw;
+}
+
+#create_popup input{
+	border-radius: 3.5px;
+	border: none;
+	background-color: rgb(255,255,255,0);
+	box-shadow: none;
+}
+
+#create_popup #header{
+	grid-row: 1;
+	grid-column: 2/6;
+}
+
+#create_popup #content{
+	grid-row: 2;
+	grid-column: 2/6;
+}
+
+#description{
+	grid-row: 3;
+	grid-column: 2/6;
+}
+
+#create_popup button{
+	grid-row: 4;
+	grid-column: 2/4;
 }

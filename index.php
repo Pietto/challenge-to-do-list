@@ -32,7 +32,7 @@
 					<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
 				</div>
 			</div>
-			<div class='add_card_button'>
+			<div id='0' class='add_card_button' onclick='addCard(0)'>
 				<p> + kaart toevoegen</p>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 			<div>
 				<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
 			</div>
-			<div class='add_card_button'>
+			<div class='add_card_button' onclick='addCard()'>
 				<p> + kaart toevoegen</p>
 			</div>
 		</div>
@@ -74,5 +74,30 @@
 				<p> + kaart toevoegen</p>
 			</div>
 		</div>
+	</div>
+
+
+
+	<div id='overlay'>
+		<div id='create_popup' class='popup'>
+			<div id='header'>
+				<img src='img/unknown.svg' class='icon'>
+				<input id='title' type='text' value='Title goes here again'></input>
+			</div><br>
+			<div id='content'>
+				<img src='img/unknown.svg' class='icon'>
+				<input id='description_alt' type='text' disabled value='omschrijving'>:</input>
+			</div><br>
+			<input type='text' placeholder='no description' id='description'></input>
+			<button>commit</button>
+		</div>
+	</div>
+
+
+
+
+
+
+	<script src="script/script.js"></script>
 </body>
 </html>
