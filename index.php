@@ -32,7 +32,11 @@
 					<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div id='0' class='add_card_button' onclick='addCard(0)'>
+=======
+			<div class='add_card_button'>
+>>>>>>> master
 				<p> + kaart toevoegen</p>
 			</div>
 		</div>
@@ -51,7 +55,11 @@
 			<div>
 				<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
 			</div>
+<<<<<<< HEAD
 			<div class='add_card_button' onclick='addCard()'>
+=======
+			<div class='add_card_button'>
+>>>>>>> master
 				<p> + kaart toevoegen</p>
 			</div>
 		</div>
@@ -74,6 +82,7 @@
 				<p> + kaart toevoegen</p>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div>
 
 
@@ -99,5 +108,7 @@
 
 
 	<script src="script/script.js"></script>
+=======
+>>>>>>> master
 </body>
 </html>

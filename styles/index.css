@@ -11,8 +11,8 @@ h1, h2, h3{
 }
 
 .primary_rows .cards{
-	overflow-y: auto;
-	height: auto;
+	overflow-y: scroll;
+	height: 70vh;
 }
 
 .cards{
