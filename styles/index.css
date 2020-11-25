@@ -47,7 +47,9 @@ h1, h2, h3{
 	cursor: pointer;
 }
 
-
+.cards div{
+	margin-right: 5px;
+}
 
 
 /* popup */
@@ -121,3 +123,41 @@ h1, h2, h3{
 	grid-row: 4;
 	grid-column: 2/4;
 }
+
+#overlay{
+	display: none;
+	opacity: 0;
+	transition: .25s;
+}
+
+
+
+
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+	width: 7px;
+	border-radius: 5px;
+	position: relative;
+	left: 10px;
+	transition: 1s;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: white; 
+	border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: rgba(0,150,255,1);
+	border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+  }
