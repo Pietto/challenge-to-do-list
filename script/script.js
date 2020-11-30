@@ -14,9 +14,20 @@ function addCard(par){
 function addCard(title, description){
     overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('overlay').style.opacity = '1';},1);
+
 }
+
+
 
 function closePopup(){
     overlay.style.opacity = '.01';
     overlay.style.display = 'none';
 }
+
+
+//closes popup upon clicking escape
+window.addEventListener('keydown', (event) =>{
+    if(event.code == 'Escape'){
+        closePopup();
+    }
+})

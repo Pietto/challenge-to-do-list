@@ -49,6 +49,7 @@ h1, h2, h3{
 
 .cards div{
 	margin-right: 5px;
+	z-index: 2;;
 }
 
 
@@ -119,7 +120,7 @@ h1, h2, h3{
 	grid-column: 2/6;
 }
 
-#create_popup button{
+#create_popup #commit{
 	grid-row: 4;
 	grid-column: 2/4;
 }
@@ -131,33 +132,80 @@ h1, h2, h3{
 }
 
 
+/* close popup */
+
+
+.close{
+    vertical-align: middle;
+    border: none;
+    color: inherit;
+    border-radius: 50%;
+	background: transparent;
+	position: absolute;
+	right: 0;
+	grid-row: 1;
+	grid-column: 5/6;
+    width: 32px;
+    height: 32px;
+	opacity: 0.6;
+	transition: .25s;
+}
+
+.close:focus, .close:hover{
+    opacity: 1;
+	background: rgba(128, 128, 128, 0.5);
+	cursor: pointer;
+}
+
+.close:active{
+    background: rgba(128, 128, 128, 0.9);
+}
+
+.close::before, .close::after{
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 20px;
+    width: 4px;
+    background-color: currentColor;
+}
+
+.close::before{
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close::after{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 
 
 
 /* scrollbar */
 
 /* width */
-::-webkit-scrollbar {
+::-webkit-scrollbar{
 	width: 7px;
 	border-radius: 5px;
 	position: relative;
 	left: 10px;
 	transition: 1s;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track{
+	background: rgba(0,200,255,1);
+	border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb{
 	background: white; 
 	border-radius: 5px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-	background: rgba(0,150,255,1);
-	border-radius: 5px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-	background: #555; 
-  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover{
+	background: rgb(166, 219, 255); 
+}

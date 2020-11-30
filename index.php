@@ -109,17 +109,18 @@
 
 
 
-	<div id='overlay' onclick='closePopup()'>
+	<div id='overlay'>
 		<div id='create_popup' class='popup'>
+			<button class='close' aria-label='Close' onclick='closePopup()'></button>
 			<div id='header'>
-				<img src='img/unknown.svg' class='icon'>
+				<img src='img/pictograms/pen.svg' class='icon'>
 				<input id='title' type='text' value='Title goes here again'></input>
 			</div><br>
 			<div id='content'>
-				<img src='img/unknown.svg' class='icon'>
+				<img src='img/pictograms/lines.svg' class='icon'>
 				<input id='description_alt' type='text' disabled value='omschrijving'>:</input>
 			</div><br>
-			<button>commit</button>
+			<button id='commit'>commit</button>
 		</div>
 	</div>
 
