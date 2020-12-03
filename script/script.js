@@ -11,10 +11,9 @@ function addCard(par){
 }
 
 
-function addCard(title, description){
+function openPopup(title, id){
     overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('overlay').style.opacity = '1';},1);
-
 }
 
 

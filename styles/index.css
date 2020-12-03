@@ -19,7 +19,7 @@ h1, h2, h3{
 	border-radius: 10px;
 }
 
-#row1,#row2,#row3{
+#row1, #row2, #row3{
 	width: 20vw;
 	background-color: rgba(0,200,255,1);
 	padding: 7.5px;
@@ -50,6 +50,19 @@ h1, h2, h3{
 .cards div{
 	margin-right: 5px;
 	z-index: 2;;
+}
+
+.cards div:hover{
+	cursor: pointer;
+	--c: rgb(150,150,150);
+}
+
+.cards div{
+	transition: .2s;
+}
+
+.cards div:hover p{
+	background-color: rgb(230,230,230) !important; 
 }
 
 
@@ -97,7 +110,7 @@ h1, h2, h3{
 	grid-column: 1/2;
 	font-size: 1.5vw;
 }
-
+,
 #create_popup input{
 	border-radius: 3.5px;
 	border: none;
