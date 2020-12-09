@@ -6,77 +6,73 @@ h1, h2, h3{
 	font-family: "helvetica";
 }
 
-.primary_rows{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .primary_rows .cards{
 	overflow-y: scroll;
 	height: 70vh;
-}
-
-.cards{
 	border-radius: 10px;
 }
 
-#row1, #row2, #row3{
+.primary_rows{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	width: 20vw;
 	background-color: rgba(0,200,255,1);
 	padding: 7.5px;
 	margin: .5vw;
 	border-radius: 10px;
 	display: inline-block;
+	margin: 5px;
+	vertical-align: top;
 }
 
-#row1 p, #row2 p, #row3 p{
+.primary_rows p{
 	background-color: white;
 	border-radius: 10px;
 	padding: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.primary_rows{
-	margin: 5px;
-}
-
-.add_card_button{
+.add_card_button, .add_list_button{
 	margin-bottom: -10px;
+	transition: .2s;
 }
 
-.add_card_button:hover{
+.add_card_button:hover p, .add_list_button:hover p{
+	transition: .2s;
 	cursor: pointer;
+	background-color: rgb(230,230,230) !important; 
 }
 
 .cards div{
 	margin-right: 5px;
 	z-index: 2;;
+	transition: .2s;
 }
 
 .cards div:hover{
+	transition: .2s;
 	cursor: pointer;
 	--c: rgb(150,150,150);
-}
-
-.cards div{
-	transition: .2s;
 }
 
 .cards div:hover p{
 	background-color: rgb(230,230,230) !important; 
 }
 
-
 /* popup */
 
 
-#overlay{
+#overlay_add_card, #overlay_add_List{
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+	opacity: 0;
+	transition: .25s;
 }
+
 
 .popup{
 	display: grid;
@@ -110,7 +106,7 @@ h1, h2, h3{
 	grid-column: 1/2;
 	font-size: 1.5vw;
 }
-,
+
 #create_popup input{
 	border-radius: 3.5px;
 	border: none;
@@ -137,13 +133,6 @@ h1, h2, h3{
 	grid-row: 4;
 	grid-column: 2/4;
 }
-
-#overlay{
-	display: none;
-	opacity: 0;
-	transition: .25s;
-}
-
 
 /* close popup */
 
