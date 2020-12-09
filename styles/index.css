@@ -6,13 +6,13 @@ h1, h2, h3{
 	font-family: "helvetica";
 }
 
-.primary_rows .cards{
+.lists .cards{
 	overflow-y: scroll;
 	height: 70vh;
 	border-radius: 10px;
 }
 
-.primary_rows{
+.lists{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	width: 20vw;
 	background-color: rgba(0,200,255,1);
@@ -61,7 +61,7 @@ h1, h2, h3{
 /* popup */
 
 
-#overlay_add_card, #overlay_add_List{
+#card_overlay, #list_overlay{
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -95,13 +95,13 @@ h1, h2, h3{
 	width: 3vw;
 }
 
-#create_popup #title{
+#create_popup .title{
 	grid-row: 1;
 	grid-column: 1/2;
 	font-size: 1.5vw;
 }
 
-#create_popup #description_alt{
+#create_popup .description_alt{
 	grid-row: 2;
 	grid-column: 1/2;
 	font-size: 1.5vw;
