@@ -63,7 +63,7 @@ h1, h2, h3{
 /* popup */
 
 
-#card_overlay, #list_overlay, #list_update_overlay{
+#card_create_overlay, #list_overlay, #list_update_overlay, #card_update_overlay{
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -109,10 +109,10 @@ h1, h2, h3{
 	font-size: 1.5vw;
 }
 
-#create_popup input{
+#create_popup input, #create_popup select{
 	border-radius: 3.5px;
 	border: none;
-	background-color: rgb(255,255,255,0);
+	background-color: rgb(255,255,255,1);
 	box-shadow: none;
 }
 
@@ -225,4 +225,18 @@ a{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover{
 	background: rgb(166, 219, 255); 
+}
+
+
+
+
+
+#card p{
+	background: linear-gradient(
+    to right, 
+    white 0%, 
+    white 95%, 
+    red 95%, 
+    red 100%
+  )!important;
 }

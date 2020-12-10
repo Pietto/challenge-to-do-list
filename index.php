@@ -28,7 +28,7 @@
 <?          foreach($cards as $card){ ?>	
             	<div id='card'>
 <?              	if ($card['list_id'] == $list['id']){
-					echo '<p>'. $card['name'] .'</p>';
+					echo '<p onclick="updateCardForm('.$card['id'].','.$card["description"].','.$card["status"].','.$card["length"].','.$card["list_id"].');">'. $card['name'] .'</p>';
 				} ?>
             	</div>
 <?      		} ?>
@@ -63,7 +63,7 @@
 			</form>
 		</div>
 	</div>
-    <div id='card_overlay'>
+    <div id='card_create_overlay'>
 		<div id='create_popup' class='popup'>
 			<button class='close' aria-label='Close' onclick='closeForms()'></button>
 			<form action='database/cards/card_create.php' method='post'>
@@ -80,7 +80,25 @@
             	<input type='submit'/>
 			</form>
 		</div>
-    </div>
+	</div>
+	<div id='card_update_overlay'>
+		<div id='create_popup' class='popup'>
+			<button class='close' aria-label='Close' onclick='closeForms()'></button>
+			<form action='database/cards/card_create.php' method='post'>
+                <h3>update Card</h3>
+                <input type='text' name='name' placeholder='name'/><br>
+                <input type='text' name='description' placeholder = 'description' /><br>
+				<input type='text' name='length' value='' placeholder='time length (minutes)'/><br>
+				<select name='status' id='status'>
+					<option value='todo'>to do</option>
+					<option value='doing'>doing</option>
+					<option value='done'>done</option>
+				</select>
+				<input type='hidden' name='card_list_id' id='card_list_id'/>
+            	<input type='submit'/>
+			</form>
+		</div>
+	</div>
 	<script src='script/script.js'></script>
 </body>
 </html>
