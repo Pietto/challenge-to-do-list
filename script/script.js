@@ -1,35 +1,40 @@
-function addCard(par) {
-    console.log(par);
-
-
-    var popup = document.createElement("DIV");
-    popup.innerHTML = "<h1>SEND HELP PLS</h1>";
-    document.body.appendChild(popup);
-
-    console.log('aaa');
-
+function createListForm() {
+    list_overlay.style.display = 'block';
+    setTimeout(function(){document.getElementById('list_overlay').style.opacity = '1';},1);
 }
 
-function openPopup(title, id) {
-    overlay_add_card.style.display = 'block';
-    setTimeout(function(){overlay_add_card.style.opacity = '1';},1);
+function closeForms() {
+    list_overlay.style.opacity = '.01';
+    setTimeout(function(){list_overlay.style.display = 'none';},200);
+    card_overlay.style.opacity = '.01';
+    setTimeout(function(){card_overlay.style.display = 'none';},200);
+    list_update_overlay.style.opacity = '.01';
+    setTimeout(function(){list_update_overlay.style.display = 'none';},200);
 }
 
-function openListPopup() {
-    overlay_add_List.style.display = 'block';
-    setTimeout(function(){overlay_add_List.style.opacity = '1';},1);
+function createCardForm(list) {
+    card_overlay.style.display = 'block';
+    setTimeout(function(){document.getElementById('card_overlay').style.opacity = '1';},1);
+    card_list_id.value = list;
+    console.log('id:', list);
 }
 
-function closePopup() {
-    overlay_add_card.style.opacity = '.01';
-    setTimeout(function(){overlay_add_card.style.display = 'none';},200);
-    overlay_add_List.style.opacity = '.01';
-    setTimeout(function(){overlay_add_List.style.display = 'none';},200);
+function UpdateListForm(id){
+    id_input.value = id;
+    list_update_overlay.style.display = 'block';
+    setTimeout(function(){document.getElementById('list_update_overlay').style.opacity = '1';},1);
 }
 
-//closes popup upon clicking escape
+// closes popup upon clicking escape
 window.addEventListener ('keydown', (event) =>{
     if(event.code == 'Escape') {
-        closePopup();
+        closeForms();
     }
-})
+});
+
+
+// function function(par){
+//     if(par == 'status'){
+
+//     }
+// }

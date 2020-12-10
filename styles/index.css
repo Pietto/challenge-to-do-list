@@ -20,19 +20,21 @@ h1, h2, h3{
 	margin: .5vw;
 	border-radius: 10px;
 	display: inline-block;
-	margin: 5px;
 	vertical-align: top;
 }
 
-.primary_rows p{
+.lists p, .lists a{
 	background-color: white;
 	border-radius: 10px;
 	padding: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.lists p, .lists a:hover{
+    cursor: pointer;
+}
+
 .add_card_button, .add_list_button{
-	margin-bottom: -10px;
 	transition: .2s;
 }
 
@@ -44,7 +46,7 @@ h1, h2, h3{
 
 .cards div{
 	margin-right: 5px;
-	z-index: 2;;
+	z-index: 2;	
 	transition: .2s;
 }
 
@@ -61,7 +63,7 @@ h1, h2, h3{
 /* popup */
 
 
-#card_overlay, #list_overlay{
+#card_overlay, #list_overlay, #list_update_overlay{
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -179,6 +181,19 @@ h1, h2, h3{
 
 .close::after{
     transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#list_update_overlay{
+	display: none;
+}
+.edit_list_button{
+    display: inline-block;
+    width: 9vw;
+}
+
+a{
+	text-decoration: none;
+	color: black;
 }
 
 

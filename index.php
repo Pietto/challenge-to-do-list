@@ -2,182 +2,85 @@
 <html>
 <head>
 	<title>to do list</title>
-	<link rel="stylesheet" type="text/css" href="styles/index.css">
+	<link rel='stylesheet' type='text/css' href='styles/index.css'>
 </head>
 <body>
-	<?php
-		include 'database/connect.php';
-		var_dump($pdo);
+	<?
+	include 'database/connect.php';
 
-		$lists_qry = 'SELECT * FROM lists';
-		$lists_stmt = $pdo->prepare($lists_qry);
-		$lists_stmt->execute();
-		$lists = $lists_stmt->fetchAll();
+	$lists_qry = 'SELECT * FROM lists';
+	$lists_stmt = $pdo->prepare($lists_qry);
+	$lists_stmt->execute();
+	$lists = $lists_stmt->fetchAll();
 
-		$cards_qry = 'SELECT * FROM cards';
-		$cards_stmt = $pdo->prepare($cards_qry);
-		$cards_stmt->execute();    
-		$cards = $cards_stmt->fetchAll();
+	$cards_qry = 'SELECT * FROM cards';
+	$cards_stmt = $pdo->prepare($cards_qry);
+	$cards_stmt->execute();	
+	$cards = $cards_stmt->fetchAll();
+
 	?>
-
-
-	<!-- <div>
-		<a href="www.google.com"><h2>naam van het bord</h2></a>
-
-		<div class='primary_rows'>
-			<h3>title 1 goes brrrrrrrrrr</h3>
-			<div class='cards'>
-				<div onclick='openPopup("create buttons", 1)'>
-					<p class='smolPP'>create buttons</p>
-				</div>
-				<div>
-					<p>try the buttons</p>
-				</div>
-				<div>
-					<p>shit on buttons</p>
-				</div>
-				<div>
-					<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
-				</div>
-			</div>
-			<div class='add_card_button' onclick='openPopup("title 1","description 1")'>
-				<p> + kaart toevoegen</p>
-			</div>
-		</div>
-
-		<div class='primary_rows'>
-			<h3>title 2 goes brrrrrrrrrr</h3>
-			<div class='cards'>
-				<div>
-					<p>create buttons</p>
-				</div>
-				<div>
-					<p>try the buttons</p>
-				</div>
-				<div>
-					<p>shit on buttons</p>
-				</div>
-				<div>
-					<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
-				</div>
-			</div>
-			<div class='add_card_button' onclick='openPopup("title 2","description 2")'>
-				<p> + kaart toevoegen</p>
-			</div>
-		</div>
-		
-		<div class='primary_rows'>
-			<h3>title 3 goes brrrrrrrrrr</h3>
-			<div class='cards'>
-				<div>
-					<p>create buttons</p>
-				</div>
-				<div>
-					<p>try the buttons</p>
-				</div>
-				<div>
-					<p>shit on buttons</p>
-				</div>
-				<div>
-					<p>buttons is my favourite cat in the whole world, his favourite food is bacon and my dads shoes.</p>
-				</div>
-			</div>
-			<div class='add_card_button' onclick='openPopup("title 3","description 3")'>
-				<p> + kaart toevoegen</p>
-			</div>
-		</div>
-
-
-		<div class='primary_rows'>
-			<div class='add_list_button' onclick='openListPopup()'>
-				<p> + lijst toevoegen</p>
-			</div>
-		</div>
-	</div> -->
 
 	<div>
 <?      foreach($lists as $list){ ?>
         <div class='lists'>
             <h3><?= $list['title']?></h3>
             <div class='cards'>
-<?          foreach($cards as $card){ ?>    
-                <div id='card'>
-                    <p><?= $card['name'] ?></p>
-                </div>
-<?              } ?>
-            </div>
-            <div class='add_card_button' onclick='openCardForm()'>
-                <p> + add card</p>
-            </div>
-        </div>
-<?        } ?>
-        <div class='lists primary_rows add_list_button'>
-            <div class='add_list_button' onclick='openListForm()'>
-                <p> + add list</p>
-            </div>
-        </div>
-    </div>
-
-    <div id='list_overlay'>
-        <div id='create_popup' class='popup'>
-            <button class='close' aria-label='Close' onclick='closeListForm()'></button>
-            <form action='list_create.php' method='post'>
-                <h3>Create List</h3>
-                <input type='text' name='title' placeholder='title' /><br><br>
-                <input type='hidden' name='id' value='<?= $lists['id'] ?>' />
-                <input type='submit' />
-            </form>
+<?          foreach($cards as $card){ ?>	
+            	<div id='card'>
+<?              	if ($card['list_id'] == $list['id']){
+					echo '<p>'. $card['name'] .'</p>';
+				} ?>
+            	</div>
+<?      		} ?>
+			</div>
+        	<p class='add_card_button' onclick='createCardForm(<?= $list["id"]; ?>)'> + add card</p>
+            <p class='edit_list_button' onclick='UpdateListForm(<?= $list["id"]; ?>)'>Update</p>
+            <a class='edit_list_button' onclick="return confirm('Are you sure?')" href='database/lists/list_delete.php?id=<?= $list['id'] ?>'>Delete</a>
+		</div>
+<?		} ?>
+        <div class='lists' onclick='createListForm()'>
+            <p class='add_list_button'> + add list</p>
         </div>
     </div>
-
-    <div id='card_overlay'>
-        <div id='create_popup' class='popup'>
-            <button class='close' aria-label='Close' onclick='closeCardForm()'></button>
-            <form action='card_create.php' method='post'>
-                <h3>Create Card</h3>
-                <input type='text' name='name' placeholder='name' /><br>
-                <input type='text' name='description' placeholder = 'description' /><br><br>
-                <input type='hidden' name='id' value='<?= $cards['id'] ?>' />
-                <input type='submit' />
-            </form>
-        </div>
-    </div>
-
-
-
-	<!-- <div id='overlay_add_card'>
+	<div id='list_overlay'>
 		<div id='create_popup' class='popup'>
-			<button class='close' aria-label='Close' onclick='closePopup()'></button>
-			<div id='header'>
-				<img src='img/pictograms/pen.svg' class='icon'>
-				<input class='title' type='text' value='' placeholder='titel'></input>
-			</div><br>
-			<div id='content'>
-				<img src='img/pictograms/lines.svg' class='icon'>
-				<input class='description_alt' type='text' disabled value='omschrijving'>:</input>
-			</div><br>
-			<button id='commit'>create</button>
+			<button class='close' aria-label='Close' onclick='closeForms()'></button>
+			<form action='database/lists/list_create.php' method='post'>
+                <h3>Create List</h3>
+            	<input type='text' name='title' placeholder='title'/><br><br>
+            	<input type='submit'/>
+			</form>
 		</div>
 	</div>
-
-
-	<div id='overlay_add_List'>
-		<form action='database/lists/list_create.php' id='create_popup' class='popup' method='post'>
-			<button class='close' aria-label='Close' onclick='closePopup()'></button>
-			<div id='header'>
-				<img src='img/pictograms/pen.svg' class='icon'>
-				<input class='title' type='text' value='' placeholder='titel' name='title'></input>
-				<input type='hidden' name='id' value=''/>
-			</div>
-			<button id='commit' type='submit'>create</button>
-		</form>
-	</div> -->
-
-
-
-
-
-
-	<script src="script/script.js"></script>
+	<div id='list_update_overlay'>
+		<div id='create_popup' class='popup'>
+			<button class='close' aria-label='Close' onclick='closeForms()'></button>
+			<form action='database/lists/list_update.php' method='post'>
+                <h3>Update List</h3>
+                <input type='text' name='title' placeholder='title'/><br>
+				<input type='hidden' name='id' id='list_id'/>
+            	<input type='submit'/>
+			</form>
+		</div>
+	</div>
+    <div id='card_overlay'>
+		<div id='create_popup' class='popup'>
+			<button class='close' aria-label='Close' onclick='closeForms()'></button>
+			<form action='database/cards/card_create.php' method='post'>
+                <h3>Create Card</h3>
+                <input type='text' name='name' placeholder='name'/><br>
+                <input type='text' name='description' placeholder = 'description' /><br>
+				<input type='text' name='length' value='' placeholder='time length (minutes)'/><br>
+				<select name='status' id='status'>
+					<option value='todo'>to do</option>
+					<option value='doing'>doing</option>
+					<option value='done'>done</option>
+				</select>
+				<input type='hidden' name='card_list_id' id='card_list_id'/>
+            	<input type='submit'/>
+			</form>
+		</div>
+    </div>
+	<script src='script/script.js'></script>
 </body>
 </html>
