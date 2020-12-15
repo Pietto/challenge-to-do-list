@@ -27,9 +27,9 @@
             <div class='cards'>
 <?          foreach($cards as $card){ ?>	
             	<div id='card'>
-<?              	if ($card['list_id'] == $list['id']){
-					echo '<p onclick="updateCardForm('.$card['id'].','.$card["description"].','.$card["status"].','.$card["length"].','.$card["list_id"].');">'. $card['name'] .'</p>';
-				} ?>
+<?              	if ($card['list_id'] == $list['id']){ ?>
+						<p id='<?=$card["status"]?>' onclick="updateCardForm(<?= $card['id'] ?>,'<?= $card['name'] ?>','<?= $card['description'] ?>','<?= $card['status'] ?>',<?= $card['length'] ?>)"><?= $card['name'] ?></p>
+<?					} ?>
             	</div>
 <?      		} ?>
 			</div>
@@ -86,10 +86,10 @@
 			<button class='close' aria-label='Close' onclick='closeForms()'></button>
 			<form action='database/cards/card_create.php' method='post'>
                 <h3>update Card</h3>
-                <input type='text' name='name' placeholder='name'/><br>
-                <input type='text' name='description' placeholder = 'description' /><br>
-				<input type='text' name='length' value='' placeholder='time length (minutes)'/><br>
-				<select name='status' id='status'>
+                <input id='update_name_input' type='text' name='name' placeholder='name'/><br>
+                <input id='update_description_input' type='text' name='description' placeholder = 'description' /><br>
+				<input id='update_length_input' type='text' name='length' value='' placeholder='time length (minutes)'/><br>
+				<select name='update_status' id='update_status'>
 					<option value='todo'>to do</option>
 					<option value='doing'>doing</option>
 					<option value='done'>done</option>

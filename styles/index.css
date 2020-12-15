@@ -227,16 +227,42 @@ a{
 	background: rgb(166, 219, 255); 
 }
 
-
-
-
-
 #card p{
+	background: linear-gradient(
+    to right, 
+    white 0%, 
+    white 95%, 
+    grey 95%, 
+    grey 100%
+  );
+}
+
+#doing{
+	background: linear-gradient(
+    to right, 
+    white 0%, 
+    white 95%, 
+    orange 95%, 
+    orange 100%
+  )!important;
+}
+
+#todo{
 	background: linear-gradient(
     to right, 
     white 0%, 
     white 95%, 
     red 95%, 
     red 100%
+  )!important;
+}
+
+#done{
+	background: linear-gradient(
+    to right, 
+    white 0%, 
+    white 95%, 
+    rgb(50,255,0) 95%, 
+    rgb(50,255,0) 100%
   )!important;
 }

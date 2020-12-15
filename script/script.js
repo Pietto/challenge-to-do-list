@@ -21,16 +21,28 @@ function createCardForm(list) {
     console.log('id:', list);
 }
 
-function updateCardForm(cardID, AAAAAA) {
+function updateCardForm(id, name, desc, cardStatus, length) {
     card_update_overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('card_update_overlay').style.opacity = '1';},1);
-
-
-    console.log(AAAAAA);
-    console.log(cardID);
-    card_list_id.value = cardID;
-
-
+    
+    update_name_input.value = name;
+    update_description_input.value = desc;
+    update_length_input.value = length;
+    
+    switch(cardStatus) {
+        case 'todo':
+            document.getElementById('update_status').selectedIndex = 0;
+        break;
+        case 'doing':
+            document.getElementById('update_status').selectedIndex = 1;
+        break;
+        case 'done':
+            document.getElementById('update_status').selectedIndex = 2;
+        break;
+        default:
+            document.getElementById('update_status').selectedIndex = 0;
+            console.log('status ', cardStatus, ' not found, default status selected.');
+    }
 }
 
 function UpdateListForm(id){
@@ -45,3 +57,9 @@ window.addEventListener ('keydown', (event) =>{
         closeForms();
     }
 });
+
+
+
+
+
+
