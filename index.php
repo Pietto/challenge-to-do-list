@@ -23,20 +23,40 @@
 	<div>
 <?      foreach($lists as $list){ ?>
         	<div class='lists'>
-        	    <h3><?= $list['title']?></h3>
+				<h3><?= $list['title']?></h3>
+
+				<div class="dropdown" id='status_dropdow'>
+					<p onclick="openStatusDropdown()" class="dropbtn">Filter status</p>
+					<div id="dropdown_content_status" class="dropdown-content">
+						<a href="#index.php">all</a>
+						<a href="#index.php?filter=todo">to do</a>
+						<a href="#index.php?filter=doing">doing</a>
+						<a href="#index.php?filter=done">done</a>
+					</div>
+				</div>
+				<div class="dropdown" id='length_dropdow'>
+					<p onclick="openLengthDropdown()" class="dropbtn">sort by length</p>
+					<div id="dropdown_content_length" class="dropdown-content">
+						<a href="#index.php?sort=timeCreated">by time created</a>
+						<a href="index.php?sort=short_long">short-long</a>
+						<a href="#index.php?sort=long_short">long-short</a>
+					</div>
+				</div>
+
+
         	    <div class='cards'>
-<?      	    foreach($cards as $card){ ?>	
+<?      	    foreach($cards as $card){ ?>
         	    	<div id='card'>
 <?      	        	if ($card['list_id'] == $list['id']){ ?>
 							<p class='card' id="<?= $card['status'] ?>" onclick="updateCardForm(<?= $card['id'] ?>,'<?= $card['name'] ?>','<?= $card['description'] ?>','<?= $card['status'] ?>',<?= $card['length'] ?>,<?= $card['list_id'] ?>)"><?= $card['name'] ?></p>
-							<a href="database/cards/card_delete.php?id=<?= $card['id']?>"><img class='trash' src='img/pictograms/trash.svg' onclick='return confirm("are you sure")' name='card_id'></a>
+							<a href="database/cards/card_delete.php?id=<?= $card['id']?>"><img class='trash' src='img/pictograms/trash.svg' onclick='return confirm("are you sure")'></a>
 <?						} ?>
         	    	</div>
 <?      		} ?>
 				</div>
         		<p class='add_card_button' onclick='createCardForm(<?= $list["id"]; ?>)'> + add card</p>
         	    <p class='edit_list_button' onclick='UpdateListForm(<?= $list["id"] ?>,"<?= $list["title"]; ?>")'>Update</p>
-        	    <a class='edit_list_button' onclick="return confirm('Are you sure?')" href='list_delete.php?id=<?= $list['id'] ?>'>Delete</a>
+        	    <a class='edit_list_button' onclick="return confirm('Are you sure?')" href='database/lists/list_delete.php?id=<?= $list['id'] ?>'>Delete</a>
 			</div>
 <?		} ?>
         <div class='lists' onclick='createListForm()'>
@@ -58,7 +78,7 @@
 			<button class='close' aria-label='Close' onclick='closeForms()'></button>
 			<form action='database/lists/list_update.php' method='post'>
                 <h3>Update List</h3>
-                <input	 minlength="2" maxlength="20" type='text' name='title' placeholder='title'/><br>
+                <input id='list_name_update' minlength="2" maxlength="20" type='text' name='title' placeholder='title'/><br>
 				<input type='hidden' name='id' id='list_id'/>
             	<input type='submit'/>
 			</form>

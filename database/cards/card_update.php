@@ -12,9 +12,8 @@ if (isset($_POST['card_id'])) {
         // Update the record
         $stmt = $pdo->prepare('UPDATE cards SET `id` = :id, `name` = :name, `description` = :description, `length` = :length, `status` = :status, `list_id` = :list_id WHERE id = :id');
         $stmt->execute([':id'=>$id, ':name'=>$name, ':description'=>$description, ':length'=>$length, ':status'=>$status, ':list_id'=>$list_id]);
-        $msg = 'Updated Successfully!';
     }
-    // header('Location: ../../index.php');
+    header('Location: ../../index.php');
 } else{
     exit('No ID specified!');
 }

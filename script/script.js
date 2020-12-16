@@ -18,8 +18,6 @@ function createCardForm(list) {
     card_create_overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('card_create_overlay').style.opacity = '1';},1);
     card_create_list_id.value = list;
-    console.log('id:', list);
-    console.log(card_list_id.value);
 }
 
 function updateCardForm(id, name, desc, cardStatus, length, list_id) {
@@ -31,7 +29,6 @@ function updateCardForm(id, name, desc, cardStatus, length, list_id) {
     update_length_input.value = length;
     card_id.value = id;
     card_list_id.value = list_id;
-    console.log('status: ',cardStatus);
     
     switch(cardStatus) {
         case 'todo':
@@ -53,7 +50,6 @@ function UpdateListForm(id, name){
     list_id.value = id;
     list_update_overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('list_update_overlay').style.opacity = '1';},1);
-    console.log('name= ',name);
     list_name_update.value = name;
 }
 
@@ -63,3 +59,39 @@ window.addEventListener ('keydown', (event) =>{
         closeForms();
     }
 });
+
+function openStatusDropdown() {
+	document.getElementById("dropdown_content_status").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	if (!event.target.matches('.dropbtn')) {
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+		var openDropdown = dropdowns[i];
+		if (openDropdown.classList.contains('show')) {
+			openDropdown.classList.remove('show');
+		}
+		}
+	}
+}
+
+function openLengthDropdown() {
+	document.getElementById("dropdown_content_length").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	if (!event.target.matches('.dropbtn')) {
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+		var openDropdown = dropdowns[i];
+		if (openDropdown.classList.contains('show')) {
+			openDropdown.classList.remove('show');
+		}
+		}
+	}
+}   
