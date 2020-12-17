@@ -1,7 +1,3 @@
-var todo = document.getElementById('card_todo');
-var doing = document.getElementById('card_doing');
-var done = document.getElementById('card_done');
-
 function createListForm() {
     list_overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('list_overlay').style.opacity = '1';},1);
@@ -81,6 +77,10 @@ function openStatusDropdown() {
 		}
 	}
 }
+
+var todo = document.getElementById('card_todo');
+var doing = document.getElementById('card_doing');
+var done = document.getElementById('card_done');
 
 function openLengthDropdown() {
 	document.getElementById("dropdown_content_length").classList.toggle("show");

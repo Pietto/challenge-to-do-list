@@ -5,46 +5,36 @@
 	<link rel='stylesheet' type='text/css' href='styles/index.css'>
 </head>
 <body>
-	<?
+<?
+	session_start();
 	include 'database/connect.php';
+	include 'database/content.php';
+?>
 
-	$lists_qry = 'SELECT * FROM lists';
-	$lists_stmt = $pdo->prepare($lists_qry);
-	$lists_stmt->execute();
-	$lists = $lists_stmt->fetchAll();
-
-	$cards_qry = 'SELECT * FROM cards';
-	$cards_stmt = $pdo->prepare($cards_qry);
-	$cards_stmt->execute();	
-	$cards = $cards_stmt->fetchAll();
-
-	?>
 
 	<div id='listsparent'>
 <?      foreach($lists as $list){ ?>
         	<div class='lists'>
 				<h3><?= $list['title']?></h3>
 
-				<select onchange="filterStatus(this, <?= $list['id'] ?>);">
-					<option value="default">geen filter</option>
-					<option value="todo">to do</option>
-					<option value="doing">doing</option>
-					<option value="done">done</option>
-				</select>
-				
-				<form action="/action_page.php">
-					<select onchange="this.form.submit()">
-						<option value="default">niet sorteren</option>
-						<option value="default">to do</option>
-						<option value="short_long">doing</option>
-						<option value="long_short">done</option>
+				<form action='<?= $_SERVER['PHP_SELF'] ?>?listID=<?= $list['id']?>' method='post'>
+					<select name='filterStatus' onchange='this.form.submit()'>
+						<option value='' hidden>filter</option>
+						<option value='default'>geen filter</option>
+						<option value='todo'>to do</option>
+						<option value='doing'>doing</option>
+						<option value='done'>done</option>
 					</select>
+					<input type='hidden' value='true' name='value'/>
 				</form>
- 
+
         	    <div class='cards'>
+<?				echo $list['id'];
+				$cards = getCardsForListID($list['id']);			?>
 <?      	    foreach($cards as $card){ ?>
         	    	<div id='card_<?= $card['status'] ?>'>
 <?      	        	if ($card['list_id'] == $list['id']){ ?>
+							<!-- if(filter == false of kaart.status == waarde) -->
 							<p class='card' id="<?= $card['status'] ?>" onclick="updateCardForm(<?= $card['id'] ?>,'<?= $card['name'] ?>','<?= $card['description'] ?>','<?= $card['status'] ?>',<?= $card['length'] ?>,<?= $card['list_id'] ?>)"><?= $card['name'] ?></p>
 							<a href="database/cards/card_delete.php?id=<?= $card['id']?>"><img class='trash' src='img/pictograms/trash.svg' onclick='return confirm("are you sure")'></a>
 <?						} ?>
