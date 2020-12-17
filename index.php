@@ -20,33 +20,30 @@
 
 	?>
 
-	<div>
+	<div id='listsparent'>
 <?      foreach($lists as $list){ ?>
         	<div class='lists'>
 				<h3><?= $list['title']?></h3>
 
-				<div class="dropdown" id='status_dropdow'>
-					<p onclick="openStatusDropdown()" class="dropbtn">Filter status</p>
-					<div id="dropdown_content_status" class="dropdown-content">
-						<a href="#index.php">all</a>
-						<a href="#index.php?filter=todo">to do</a>
-						<a href="#index.php?filter=doing">doing</a>
-						<a href="#index.php?filter=done">done</a>
-					</div>
-				</div>
-				<div class="dropdown" id='length_dropdow'>
-					<p onclick="openLengthDropdown()" class="dropbtn">sort by length</p>
-					<div id="dropdown_content_length" class="dropdown-content">
-						<a href="#index.php?sort=timeCreated">by time created</a>
-						<a href="index.php?sort=short_long">short-long</a>
-						<a href="#index.php?sort=long_short">long-short</a>
-					</div>
-				</div>
-
-
+				<select onchange="filterStatus(this, <?= $list['id'] ?>);">
+					<option value="default">geen filter</option>
+					<option value="todo">to do</option>
+					<option value="doing">doing</option>
+					<option value="done">done</option>
+				</select>
+				
+				<form action="/action_page.php">
+					<select onchange="this.form.submit()">
+						<option value="default">niet sorteren</option>
+						<option value="default">to do</option>
+						<option value="short_long">doing</option>
+						<option value="long_short">done</option>
+					</select>
+				</form>
+ 
         	    <div class='cards'>
 <?      	    foreach($cards as $card){ ?>
-        	    	<div id='card'>
+        	    	<div id='card_<?= $card['status'] ?>'>
 <?      	        	if ($card['list_id'] == $list['id']){ ?>
 							<p class='card' id="<?= $card['status'] ?>" onclick="updateCardForm(<?= $card['id'] ?>,'<?= $card['name'] ?>','<?= $card['description'] ?>','<?= $card['status'] ?>',<?= $card['length'] ?>,<?= $card['list_id'] ?>)"><?= $card['name'] ?></p>
 							<a href="database/cards/card_delete.php?id=<?= $card['id']?>"><img class='trash' src='img/pictograms/trash.svg' onclick='return confirm("are you sure")'></a>
@@ -91,7 +88,7 @@
                 <h3>Create Card</h3>
                 <input minlength="2" maxlength="25" type='text' name='name' placeholder='name'/><br>
                 <input minlength="2" maxlength="99" type='text' name='description' placeholder = 'description' /><br>
-				<input max="3600" type='number' name='length' value='' placeholder='time length (minutes)'/><br>
+				<input min="1" max="3600" type='number' name='length' value='1' placeholder='time length (minutes)'/><br>
 				<select name='status' id='status'>
 					<option value='todo'>to do</option>
 					<option value='doing'>doing</option>
@@ -109,7 +106,7 @@
                 <h3>update Card</h3>
                 <input minlength="2" maxlength="25" id='update_name_input' type='text' name='name' placeholder='name'/><br>
                 <input minlength="2" maxlength="99" id='update_description_input' type='text' name='description' placeholder = 'description' /><br>
-				<input id='update_length_input' type='number' name='length' placeholder='time length (minutes)'/><br>
+				<input min="1" max="3600" id='update_length_input' type='number' name='length' placeholder='time length (minutes)'/><br>
 				<select id='update_status' name='update_status'>
 					<option value='todo'>to do</option>
 					<option value='doing'>doing</option>

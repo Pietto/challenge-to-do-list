@@ -227,7 +227,7 @@ a{
 	background: rgb(166, 219, 255); 
 }
 
-#card p{
+#card_todo p, #card_doing p, #card_done p,{
 	background: linear-gradient(
     to right, 
     white 0%, 
@@ -276,7 +276,7 @@ a{
 	margin: 0 auto;
 }
 
-#card{
+#card_todo, #card_doing, #card_done{
 	display: grid;
 }
 
@@ -286,10 +286,10 @@ a{
 	grid-row: 1;
 }
 
-#card form{
+#card_todo form, #card_doing form, #card_done form{
 	margin: 0 auto;
 }
-#card a{
+#card_todo a, #card_doing a, #card_done a{
 	grid-column: 6/7;
 	grid-row: 1;
 	margin: 0 auto;
@@ -345,4 +345,9 @@ a{
 
 .show {
 	display: block;
+}
+
+.listsparent{
+    overflow:scroll;
+	white-space: nowrap;
 }

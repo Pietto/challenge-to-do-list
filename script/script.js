@@ -1,3 +1,7 @@
+var todo = document.getElementById('card_todo');
+var doing = document.getElementById('card_doing');
+var done = document.getElementById('card_done');
+
 function createListForm() {
     list_overlay.style.display = 'block';
     setTimeout(function(){document.getElementById('list_overlay').style.opacity = '1';},1);
@@ -94,4 +98,32 @@ function openLengthDropdown() {
 		}
 		}
 	}
-}   
+}
+
+function filterStatus(status, listId){
+    switch(status.value){
+        case 'todo':
+            todo.style.display = 'grid';
+            doing.style.display = 'none';
+            done.style.display = 'none';
+        break;
+        case 'doing':
+            todo.style.display = 'none';
+            doing.style.display = 'grid';
+            done.style.display = 'none';
+        break;
+        case 'done':
+            todo.style.display = 'none';
+            doing.style.display = 'none';
+            done.style.display = 'grid';
+        break;
+        case 'default':
+            todo.style.display = 'grid';
+            doing.style.display = 'grid';
+            done.style.display = 'grid';
+        default:
+            todo.style.display = 'grid';
+            doing.style.display = 'grid';
+            done.style.display = 'grid';
+    }
+}
